@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔒 Casse le Coffre-Fort</title>
+  <title>🔮 Casse le Coffre Magique</title>
   <style>
     * {
       margin: 0;
@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://img.freepik.com/photos-gratuite/lune-art-numerique-bateau_23-2150918859.jpg') no-repeat center center fixed;
+      background: url('https://img.freepik.com/photos-gratuite/abeille-style-fantastique-dans-nature_23-2151176547.jpg?semt=ais_hybrid&w=740') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       text-align: center;
@@ -109,10 +109,10 @@
     }
 
     .chest {
-      width: 220px;
+      width: 200px;
       height: 180px;
       margin: 0 auto;
-      background-image: url('https://i.ibb.co/k2rrYznD/coffre-fort.jpg');
+      background-image: url('https://i.postimg.cc/BLY0pcHk/coffre-magique.jpg');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -573,8 +573,8 @@
       }
       
       .chest {
-        width: 180px;
-        height: 150px;
+        width: 160px;
+        height: 140px;
       }
       
       .instructions {
@@ -649,7 +649,7 @@
   <div class="game-container" id="gameContainer">
     <div class="combo-indicator" id="comboIndicator">COMBO x0</div>
 
-    <h1>🔒 Casse le Coffre-Fort !</h1>
+    <h1>🔮 Casse le Coffre Magique !</h1>
     
     <div class="difficulty-selector">
       <div class="difficulty-btn easy active" data-difficulty="easy">Facile</div>
@@ -663,7 +663,7 @@
     </div>
 
     <div class="instructions">
-      <h2>🔒 Casse le Coffre-Fort et Gagne le Trésor ! 🔒</h2>
+      <h2>🔮 Casse le Coffre Magique et Gagne le Trésor ! 🔮</h2>
       <p>Un Coup = Un Point de Vie en Moins</p>
     </div>
 
@@ -686,7 +686,7 @@
     <p id="message"></p>
 
     <div id="resultContainer" class="hidden result-box">
-      <h3>🎉 Coffre-Fort Détruit ! 🎉</h3>
+      <h3>🎉 Coffre Magique Détruit ! 🎉</h3>
       <div id="rewardImage" class="reward-image"></div>
       <p id="coinsResult">Vous avez gagné 0 pièce !</p>
     </div>
@@ -967,14 +967,14 @@
     function updateUI() {
       if (currentHP === 0) {
         chest.className = "chest broken " + currentDifficulty;
-        message.textContent = "💥 Le coffre-fort s'est brisé !";
+        message.textContent = "💥 Le coffre magique s'est brisé !";
       } else {
         if (maxHP - currentHP >= maxHP * 0.7) {
           chest.classList.add("cracked");
-          message.textContent = "⚠️ Le coffre-fort commence à se fissurer...";
+          message.textContent = "⚠️ Le coffre magique commence à se fissurer...";
         } else {
           chest.classList.remove("cracked");
-          message.textContent = `Coffre-fort ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment le coffre peut se briser...`;
+          message.textContent = `Coffre magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment le coffre peut se briser...`;
         }
       }
     }
@@ -1005,13 +1005,13 @@
       
       playBreakSound();
       
-      message.textContent = "💥 Félicitations ! Tu as cassé le coffre-fort ! 🔒✨";
+      message.textContent = "💥 Félicitations ! Tu as cassé le coffre magique ! 🔮✨";
       
       setTimeout(() => {
         rewardImage.style.backgroundImage = `url('${rewardImg}')`;
         coinsResult.innerHTML = `
           <strong>🎉 BRAVO ! 🎉</strong><br>
-          Tu as cassé le coffre-fort ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} !<br>
+          Tu as cassé le coffre magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} !<br>
           <div style="font-size: 1.3em; margin: 10px 0; color: #feca57;">${rewardText}</div>
         `;
         resultContainer.classList.remove("hidden");
@@ -1074,7 +1074,7 @@
       isAttacking = false;
       
       chest.className = "chest " + currentDifficulty;
-      message.textContent = `Coffre-fort ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment le coffre peut se briser...`;
+      message.textContent = `Coffre magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment le coffre peut se briser...`;
       
       resultContainer.classList.add("hidden");
       comboIndicator.style.display = "none";
@@ -1170,4 +1170,4 @@
     initGame();
   </script>
 </body>
-</html> 
+</html>
