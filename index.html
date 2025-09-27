@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔮 Casse le Coffre Magique</title>
+  <title>🍯 La Ruche Magique</title>
   <style>
     * {
       margin: 0;
@@ -98,7 +98,7 @@
       color: #feca57;
     }
 
-    .chest-container {
+    .hive-container {
       position: relative;
       margin: 20px auto;
       display: flex;
@@ -108,7 +108,7 @@
       min-height: 200px;
     }
 
-    .chest {
+    .hive {
       width: 200px;
       height: 180px;
       margin: 0 auto;
@@ -122,15 +122,15 @@
       z-index: 5;
     }
 
-    .chest.easy {
+    .hive.easy {
       filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.7)) brightness(1.1);
     }
 
-    .chest.medium {
+    .hive.medium {
       filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) brightness(1.1) hue-rotate(15deg);
     }
 
-    .chest.hard {
+    .hive.hard {
       filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.8)) brightness(1.1) hue-rotate(330deg);
       animation: redGlow 2s ease-in-out infinite alternate;
     }
@@ -140,32 +140,32 @@
       100% { filter: drop-shadow(0 0 35px rgba(255, 50, 50, 1)) brightness(1.3) hue-rotate(320deg); }
     }
 
-    .chest.hit {
+    .hive.hit {
       animation: lightHit 0.4s ease-out;
     }
 
-    .chest.heavy-hit {
+    .hive.heavy-hit {
       animation: heavyHit 0.6s ease-out;
     }
 
-    .chest.critical-hit {
+    .hive.critical-hit {
       animation: criticalHit 0.8s ease-out;
     }
 
-    .chest.mega-hit {
+    .hive.mega-hit {
       animation: megaHit 1.2s ease-out;
     }
 
-    .chest.ultra-hit {
+    .hive.ultra-hit {
       animation: ultraHit 1.5s ease-out;
     }
 
-    .chest.cracked {
+    .hive.cracked {
       filter: brightness(0.7) drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
       animation: redPulse 1s infinite;
     }
 
-    .chest.broken {
+    .hive.broken {
       opacity: 0.3;
       filter: grayscale(100%) brightness(0.3);
       animation: knockout 1.5s ease-out forwards;
@@ -572,7 +572,7 @@
         font-size: 1.8em;
       }
       
-      .chest {
+      .hive {
         width: 160px;
         height: 140px;
       }
@@ -649,7 +649,7 @@
   <div class="game-container" id="gameContainer">
     <div class="combo-indicator" id="comboIndicator">COMBO x0</div>
 
-    <h1>🔮 Casse le Coffre Magique !</h1>
+    <h1>🍯 La Ruche Magique !</h1>
     
     <div class="difficulty-selector">
       <div class="difficulty-btn easy active" data-difficulty="easy">Facile</div>
@@ -657,13 +657,13 @@
       <div class="difficulty-btn hard" data-difficulty="hard">Difficile</div>
     </div>
     
-    <div class="chest-container">
-      <div class="chest easy" id="chest"></div>
+    <div class="hive-container">
+      <div class="hive easy" id="hive"></div>
       <div class="particles-container" id="particlesContainer"></div>
     </div>
 
     <div class="instructions">
-      <h2>🔮 Casse le Coffre Magique et Gagne le Trésor ! 🔮</h2>
+      <h2>🍯 Casse la Ruche Magique et Gagne le Trésor ! 🍯</h2>
       <p>Un Coup = Un Point de Vie en Moins</p>
     </div>
 
@@ -680,13 +680,13 @@
 
     <div class="controls">
       <button id="attackBtn">Attaquer (1 coup)</button>
-      <button id="resetBtn">Nouveau Coffre</button>
+      <button id="resetBtn">Nouvelle Ruche</button>
     </div>
 
     <p id="message"></p>
 
     <div id="resultContainer" class="hidden result-box">
-      <h3>🎉 Coffre Magique Détruit ! 🎉</h3>
+      <h3>🎉 Ruche Magique Détruite ! 🎉</h3>
       <div id="rewardImage" class="reward-image"></div>
       <p id="coinsResult">Vous avez gagné 0 pièce !</p>
     </div>
@@ -703,7 +703,7 @@
     let audioContext = null;
     let currentDifficulty = "easy";
 
-    const chest = document.getElementById("chest");
+    const hive = document.getElementById("hive");
     const message = document.getElementById("message");
     const attackBtn = document.getElementById("attackBtn");
     const resultContainer = document.getElementById("resultContainer");
@@ -784,14 +784,14 @@
       hammer.appendChild(hammerHead);
       hammer.appendChild(hammerHandle);
       
-      // Positionner le marteau au-dessus du coffre
-      const chestRect = chest.getBoundingClientRect();
-      const containerRect = chest.parentElement.getBoundingClientRect();
+      // Positionner le marteau au-dessus de la ruche
+      const hiveRect = hive.getBoundingClientRect();
+      const containerRect = hive.parentElement.getBoundingClientRect();
       
-      hammer.style.left = (chestRect.left + chestRect.width/2 - containerRect.left) + 'px';
-      hammer.style.top = (chestRect.top - containerRect.top) + 'px';
+      hammer.style.left = (hiveRect.left + hiveRect.width/2 - containerRect.left) + 'px';
+      hammer.style.top = (hiveRect.top - containerRect.top) + 'px';
       
-      chest.parentElement.appendChild(hammer);
+      hive.parentElement.appendChild(hammer);
       
       return hammer;
     }
@@ -815,11 +815,11 @@
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        const chestRect = chest.getBoundingClientRect();
-        const containerRect = chest.parentElement.getBoundingClientRect();
+        const hiveRect = hive.getBoundingClientRect();
+        const containerRect = hive.parentElement.getBoundingClientRect();
         
-        particle.style.left = (chestRect.left + chestRect.width/2 - containerRect.left + (Math.random() * 60 - 30)) + 'px';
-        particle.style.top = (chestRect.top + chestRect.height/2 - containerRect.top + (Math.random() * 60 - 30)) + 'px';
+        particle.style.left = (hiveRect.left + hiveRect.width/2 - containerRect.left + (Math.random() * 60 - 30)) + 'px';
+        particle.style.top = (hiveRect.top + hiveRect.height/2 - containerRect.top + (Math.random() * 60 - 30)) + 'px';
         
         particlesContainer.appendChild(particle);
         
@@ -849,7 +849,7 @@
       effect.style.left = (Math.random() * 70 + 15) + '%';
       effect.style.top = (Math.random() * 50 + 25) + '%';
       
-      document.querySelector('.chest-container').appendChild(effect);
+      document.querySelector('.hive-container').appendChild(effect);
       
       setTimeout(() => {
         effect.remove();
@@ -879,7 +879,7 @@
       let hits = attackMode;
       let actualHits = 0;
       let rosesEarned = 0;
-      let wasCracked = chest.classList.contains('cracked');
+      let wasCracked = hive.classList.contains('cracked');
       
       // Animer le marteau
       animateHammer();
@@ -913,7 +913,7 @@
         animationDuration = 600;
       }
 
-      chest.classList.add(animationType);
+      hive.classList.add(animationType);
       if (shakeType) gameContainer.classList.add(shakeType);
       
       for (let i = 0; i < hits && currentHP > 0; i++) {
@@ -938,12 +938,12 @@
       
       updateUI();
       
-      if (!wasCracked && chest.classList.contains('cracked')) {
+      if (!wasCracked && hive.classList.contains('cracked')) {
         playCrackSound();
       }
       
       setTimeout(() => {
-        chest.classList.remove(animationType);
+        hive.classList.remove(animationType);
         if (shakeType) gameContainer.classList.remove(shakeType);
         isAttacking = false;
         
@@ -957,7 +957,7 @@
       const roseDisplay = document.createElement('div');
       roseDisplay.className = 'coins-display';
       roseDisplay.textContent = `+${amount} 🌹`;
-      chest.parentElement.appendChild(roseDisplay);
+      hive.parentElement.appendChild(roseDisplay);
       
       setTimeout(() => {
         roseDisplay.remove();
@@ -966,15 +966,15 @@
 
     function updateUI() {
       if (currentHP === 0) {
-        chest.className = "chest broken " + currentDifficulty;
-        message.textContent = "💥 Le coffre magique s'est brisé !";
+        hive.className = "hive broken " + currentDifficulty;
+        message.textContent = "💥 La ruche magique s'est brisée !";
       } else {
         if (maxHP - currentHP >= maxHP * 0.7) {
-          chest.classList.add("cracked");
-          message.textContent = "⚠️ Le coffre magique commence à se fissurer...";
+          hive.classList.add("cracked");
+          message.textContent = "⚠️ La ruche magique commence à se fissurer...";
         } else {
-          chest.classList.remove("cracked");
-          message.textContent = `Coffre magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment le coffre peut se briser...`;
+          hive.classList.remove("cracked");
+          message.textContent = `Ruche magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment la ruche peut se briser...`;
         }
       }
     }
@@ -1005,13 +1005,13 @@
       
       playBreakSound();
       
-      message.textContent = "💥 Félicitations ! Tu as cassé le coffre magique ! 🔮✨";
+      message.textContent = "💥 Félicitations ! Tu as cassé la ruche magique ! 🍯✨";
       
       setTimeout(() => {
         rewardImage.style.backgroundImage = `url('${rewardImg}')`;
         coinsResult.innerHTML = `
           <strong>🎉 BRAVO ! 🎉</strong><br>
-          Tu as cassé le coffre magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} !<br>
+          Tu as cassé la ruche magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} !<br>
           <div style="font-size: 1.3em; margin: 10px 0; color: #feca57;">${rewardText}</div>
         `;
         resultContainer.classList.remove("hidden");
@@ -1043,8 +1043,8 @@
       });
       document.querySelector(`.difficulty-btn.${difficulty}`).classList.add('active');
       
-      // Mettre à jour l'apparence du coffre
-      chest.className = "chest " + difficulty;
+      // Mettre à jour l'apparence de la ruche
+      hive.className = "hive " + difficulty;
       
       // Réinitialiser le jeu avec la nouvelle difficulté
       initGame();
@@ -1073,8 +1073,8 @@
       lastHitTime = 0;
       isAttacking = false;
       
-      chest.className = "chest " + currentDifficulty;
-      message.textContent = `Coffre magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment le coffre peut se briser...`;
+      hive.className = "hive " + currentDifficulty;
+      message.textContent = `Ruche magique ${currentDifficulty === "easy" ? "facile" : currentDifficulty === "medium" ? "moyen" : "difficile"} - À tout moment la ruche peut se briser...`;
       
       resultContainer.classList.add("hidden");
       comboIndicator.style.display = "none";
